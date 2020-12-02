@@ -1,5 +1,5 @@
 import discord
-TOKEN = 'NzgzNDQwNjExNDc0MDE0MjU4.X8ax7Q.1BEfVEju3N5RzEk1OU4QHopT_Pk'
+TOKEN = 'твой токен'
 
 client = discord.Client()
 
