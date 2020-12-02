@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 
-TOKEN = 'NzgzNDQwNjExNDc0MDE0MjU4.X8ax7Q.mAHVx2GQ0PahGKo7P2YKRp15Of0'
+TOKEN = 'твой токен'
 
 client = discord.Client()
 
