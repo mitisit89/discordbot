@@ -1,26 +1,24 @@
 import discord
-from  discord.utils import get
-from discord.ext import commands
-bot = commands.Bot(command_prefix='!')
-roles=[role.name for role in bot.guilds.roles]
-print(roles)
 
-#719928773230985286
 
-@bot.event
-async def on_ready():
-    print('We have logged in as {0.user}'.format(bot))
-@bot.command(name='test')
-async def _test(context):
-    await context.channel.send(f"Я работаю  и с мной все в проядке  {context.message.author.mention}! ")
-    '''
-    context.message.author.mention для обращения к пользователью 
-    '''
+class Bot(discord.Client):
 
-@bot.command(name='карп')
-async  def on_karp_reaction(message):
-    if message.content=='карп':
-        await  message.channel.send(f'карпа нет его убиль стример')
+    async def on_ready(self):
+        print('Logged in as')
+        print(self.user.name)
+        print(self.user.id)
+        print('------')
+
+    async def on_message(self, message):
+        if message.author.id == self.user.id:
+            return
+        if message.content == '!привет':
+            await message.channel.send(f'Привет,я рад тебя видеть {message.author.mention} !')
+        if message.content == 'карп':
+            await  message.channel.send(f"Карпа убиль @Mestro ,но это не точно  {message.author.mention}!")
+
+
+bot = Bot()
 
 '''
 client.event
