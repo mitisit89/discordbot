@@ -1,18 +1,31 @@
 import discord
-TOKEN = 'твой токен'
+from  discord.utils import get
+from discord.ext import commands
+bot = commands.Bot(command_prefix='!')
+roles=[role.name for role in bot.guilds.roles]
+print(roles)
 
-client = discord.Client()
+#719928773230985286
 
-
-@client.event
+@bot.event
 async def on_ready():
-    print('We have logged in as {0.user}'.format(client))
+    print('We have logged in as {0.user}'.format(bot))
+@bot.command(name='test')
+async def _test(context):
+    await context.channel.send(f"Я работаю  и с мной все в проядке  {context.message.author.mention}! ")
+    '''
+    context.message.author.mention для обращения к пользователью 
+    '''
 
+@bot.command(name='карп')
+async  def on_karp_reaction(message):
+    if message.content=='карп':
+        await  message.channel.send(f'карпа нет его убиль стример')
 
-@client.event
+'''
+client.event
 async def on_message(message):
-    if message.author == client.user:
-        return
+   
 
     if message.content.startswith('!привет'):
         await message.channel.send('Привет,я рад тебя читать!')
@@ -31,3 +44,7 @@ async def on_message(message):
         await message.channel.send('ат души, братан')
     if message.content.startswith('!Бот дай прогноз'):
         await message.channel.send('Для успеха нужно построить Зиккурат')
+    if message.content.startswith('!карп велик')=='!карп велик':
+        await message.channel.send('Да,конечно он карп велик')
+    if message.content.startswith('!покушать'):
+        await message.channel.send('Я бот ,я не умею готовить')'''
