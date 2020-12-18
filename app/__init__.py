@@ -1,8 +1,11 @@
 import discord
+from discord.ext import commands
 
 
 class Bot(discord.Client):
-    list_of_commands=['!привет','!команды','!Дай прогноз','!спасибо']
+    list_of_commands = ['!привет', '!команды', '!Дай прогноз', '!спасибо']
+
+    # bot_id='<@783440611474014258>'
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
@@ -11,25 +14,26 @@ class Bot(discord.Client):
         print(self.user.name)
         print(self.user.id)
         print('------')
-    async def on_message(self, message,):
 
+
+    async def on_message(self, message, ):
+        mestro = '<@447491112823685140>'  # формат id
         if message.author.id == self.user.id:
             return
-        if message.content == '!привет':
+        if message.content == f'привет':
             await message.channel.send(f'Привет,я рад тебя видеть {message.author.mention} !')
         if message.content == 'карп':
-            await  message.channel.send(f"Карпа убиль Mestro ,но это не точно  {message.author.mention}!")
-        if message.content.startswith('!Дай прогноз'):
+            await  message.channel.send(f"Карпа убиль {mestro},но это не точно  {message.author.mention}!")
+        if message.content.startswith('Дай прогноз'):
             await message.channel.send(f'Для успеха нужно построить Зиккурат,{message.author.mention}')
-        if message.content=='!спасибо':
+        if message.content == '!спасибо':
             await message.channel.send(f'ат души {message.author.mention}, братан')
-        if message.content=='!команды':
-             for command in self.list_of_commands:
+        if message.content == 'команды':
+            for command in self.list_of_commands:
                 await  message.channel.send(command)
 
 
-
-bot = Bot()
+bot = Bot(command_prefix='!')
 
 '''
 client.event

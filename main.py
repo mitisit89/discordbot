@@ -1,4 +1,4 @@
-from  app import *
+from  app import bot
 
 file=open("token.txt")
 TOKEN=file.read()
