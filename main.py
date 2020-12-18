@@ -1,4 +1,7 @@
-from app import *
+from  app import *
 
+file=open("token.txt")
+TOKEN=file.read()
+file.close()
 if __name__ == '__main__':
-    client.run(TOKEN)
+    bot.run(TOKEN)
