@@ -2,20 +2,31 @@ import discord
 
 
 class Bot(discord.Client):
+    list_of_commands=['!привет','!команды','!Дай прогноз','!спасибо']
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
 
     async def on_ready(self):
         print('Logged in as')
         print(self.user.name)
         print(self.user.id)
         print('------')
+    async def on_message(self, message,):
 
-    async def on_message(self, message):
         if message.author.id == self.user.id:
             return
         if message.content == '!привет':
             await message.channel.send(f'Привет,я рад тебя видеть {message.author.mention} !')
         if message.content == 'карп':
-            await  message.channel.send(f"Карпа убиль @Mestro ,но это не точно  {message.author.mention}!")
+            await  message.channel.send(f"Карпа убиль Mestro ,но это не точно  {message.author.mention}!")
+        if message.content.startswith('!Дай прогноз'):
+            await message.channel.send(f'Для успеха нужно построить Зиккурат,{message.author.mention}')
+        if message.content=='!спасибо':
+            await message.channel.send(f'ат души {message.author.mention}, братан')
+        if message.content=='!команды':
+             for command in self.list_of_commands:
+                await  message.channel.send(command)
+
 
 
 bot = Bot()
@@ -38,10 +49,7 @@ async def on_message(message):
         await message.channel.send('┬─┬ノ( º _ ºノ) пожалуйста')
     if message.content.startswith('!бот переверни стол'):
         await message.channel.send('( ╯°□°)╯ ┻━━┻')
-    if message.content.startswith('!спасибо бот'):
-        await message.channel.send('ат души, братан')
-    if message.content.startswith('!Бот дай прогноз'):
-        await message.channel.send('Для успеха нужно построить Зиккурат')
+   
     if message.content.startswith('!карп велик')=='!карп велик':
         await message.channel.send('Да,конечно он карп велик')
     if message.content.startswith('!покушать'):
