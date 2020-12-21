@@ -5,11 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "run":"node index.js"
+    "dev": " nodemon index"
   },
-  "author": "",
+  "author": "mitisit89@gmail.com",
   "license": "ISC",
   "dependencies": {
     "discord.js": "^12.5.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
   }
 }
